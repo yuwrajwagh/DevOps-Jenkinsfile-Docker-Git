@@ -9,7 +9,6 @@ pipeline {
                  commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
               }
              // remove previous containers
-             sh "sudo docker rm -f `docker ps -aq`"   
              // BUILD the Docker image
              sh "sudo docker build -t image-name:${commit_id} ."
              // SDEPLOYMENT:  Running docker container as my application   
